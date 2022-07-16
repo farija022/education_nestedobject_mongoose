@@ -25,10 +25,19 @@ const postView = async (req, res) => {
 const putView = async (req, res) => {
 
     const user = await User.findOne({ _id: req.params.id })
+    // console.log(user)
+    // res.send(user)
+
+    // let data = user[0]
+    // console.log(data)
+
+    // res.send(data.institutionName)
 
     if (user) {
         user.educationalQualifications = req.body.educationalQualifications || user.educationalQualifications
-
+        // data.passingDegreeName = req.body.passingDegreeName || data.passingDegreeName,
+        // data.passingYear = req.body.passingYear || data.passingYear,
+        // data.address = req.body.address || data.address
 
         try {
             const updatedUser = await user.save()
@@ -36,7 +45,9 @@ const putView = async (req, res) => {
             res.json({
                 _id: updatedUser._id,
                 educationalQualifications: updatedUser.educationalQualifications
-
+                //     passingDegreeName: updatedUser.passingDegreeName,
+                //     passingYear: updatedUser.passingYear,
+                //     address: updatedUser.address
             })
         } catch (err) {
             res.send(err)
