@@ -10,11 +10,10 @@ const postView = async (req, res) => {
     });
     try {
         const saveUser = await user.save();
-        res.send(saveUser);
+        console.log(saveUser);
         if (saveUser) {
             res.json({
-                _id: saveUser._id,
-                educationalQualifications: saveUser.educationalQualifications,
+                _id: saveUser._id
             })
         }
     } catch (err) {
